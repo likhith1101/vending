@@ -1,0 +1,30 @@
+<!-- vending-machine.component.html -->
+<div class="vending-machine">
+ 
+    <label for="productId">Enter Product ID:</label>
+    <input type="text" id="productId" [(ngModel)]="productId" />
+    <button (click)="openDoor()">Open Door</button>
+  
+    <div *ngIf="selectedProducts.length > 0">
+      <h2>Selected Products:</h2>
+      <ul>
+        <li *ngFor="let product of selectedProducts">
+          {{ product.name }} ({{ product.quantity }}x)
+        </li>
+      </ul>
+      <button (click)="closeDoor()">Close Door</button>
+      <p>Total Bill: ₹{{ totalBill }}</p>
+    </div>
+  
+    <!-- Display sections and their products -->
+<div *ngFor="let section of availableSections">
+    <h3>{{ section.sectionName }}</h3>
+    <ul>
+      <li *ngFor="let product of section.products">
+        {{ product.name }} (ID: {{ product.id }}) - ₹{{ product.price }} (Quantity: {{ product.quantity }})
+      </li>
+    </ul>
+  </div>
+  
+  </div>
+  
